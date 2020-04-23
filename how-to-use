@@ -1,0 +1,8 @@
+I assume that you have already cloned this repo or downloaded all the necessary files. After that you have to do the following steps to get the RHEL-Patchmanagement to work.
+
+Edit run_rhel_patch_mgmt.sh and insert the sshkey which is used to connect to your nodes.
+Create a cronjob which runs run_rhel_patch_mgmt.sh on every Tuesday and Wednesday at a chosen time. The script will trigger the ansible playbook at the times as mentioned in the use case above. You could adjust it to your needs.
+You may have to edit patch_rhel.yml to fit your needs. By default this playbook runs on all hosts of your inventory which have a Red Hat operating system installed and which are member of the corresponding rhel-patch-phaseX group.
+Rename variables.txt.example to variables.txt and edit the file accordingly to fit your environment.
+Edit create_vars.sh and set source to the abolute path for the variables file.
+Per default create_vars.sh runs on the first Tuesday of month to create a new vars/main.yml file with a current patch set and the file mail_text.txt.
